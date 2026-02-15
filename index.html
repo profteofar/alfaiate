@@ -65,14 +65,21 @@
                     <span class="text-purple-200 text-xs hidden sm:inline-block border border-purple-300 rounded px-2 py-0.5">Recurvirostra avosetta</span>
                 </div>
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-4">
+                <nav class="hidden md:flex items-center space-x-4">
                     <button onclick="switchTab('study')" class="nav-btn text-purple-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" data-tab="study">Guia de Estudo</button>
                     <button onclick="switchTab('flashcards')" class="nav-btn text-purple-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" data-tab="flashcards">Flashcards</button>
                     <button onclick="switchTab('glossary')" class="nav-btn text-purple-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" data-tab="glossary">Glossário</button>
                     <button onclick="switchTab('quiz')" class="nav-btn text-purple-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" data-tab="quiz">Aprendizagem Ativa</button>
+                    <!-- User Guide Button -->
+                    <button onclick="openModal('user-guide-modal')" class="ml-4 p-2 bg-yellow-500 hover:bg-yellow-400 text-purple-900 rounded-full shadow-md transition-transform hover:scale-110 flex items-center justify-center" title="Guia de Utilizador">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
                 </nav>
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden">
+                <div class="md:hidden flex items-center gap-3">
+                    <button onclick="openModal('user-guide-modal')" class="p-1.5 bg-yellow-500 text-purple-900 rounded-full">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
                     <button onclick="toggleMobileMenu()" class="text-white hover:text-purple-200 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -348,13 +355,77 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 mt-auto py-6 no-print">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-500 text-sm">Recurso Educativo - O Alfaiate (Recurvirostra avosetta)</p>
-            <p class="text-xs text-gray-400 mt-1">Baseado nos documentos técnicos da Reserva Natural do Estuário do Tejo.</p>
+            <p class="text-gray-800 font-bold text-sm tracking-wide">Teodósio Faria ©2026 Guia Educativo sobre o Alfaiate</p>
+            <p class="text-xs text-gray-400 mt-1 italic">Baseado nos documentos técnicos da Reserva Natural do Estuário do Tejo.</p>
         </div>
     </footer>
 
     <!-- MODALS -->
     
+    <!-- User Guide Modal -->
+    <div id="user-guide-modal" class="fixed inset-0 bg-black bg-opacity-70 z-[60] hidden flex items-center justify-center p-4" onclick="if(event.target === this) closeModal('user-guide-modal')">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-purple-800 p-6 text-white flex justify-between items-center">
+                <h3 class="text-2xl classic-font tracking-widest font-bold">Guia de Utilizador</h3>
+                <button onclick="closeModal('user-guide-modal')" class="text-white hover:text-purple-200 transition-colors text-3xl font-light">✕</button>
+            </div>
+            <div class="p-8 overflow-y-auto space-y-6">
+                <section>
+                    <h4 class="font-bold text-purple-800 border-b border-purple-100 pb-2 mb-3 flex items-center gap-2">
+                        <span class="text-xl">🚀</span> Como Navegar
+                    </h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Utilize a barra superior para navegar entre as 4 secções principais. A barra de progresso no topo indica a sua jornada através dos conteúdos.</p>
+                </section>
+                
+                <section>
+                    <h4 class="font-bold text-purple-800 border-b border-purple-100 pb-2 mb-3 flex items-center gap-2">
+                        <span class="text-xl">📚</span> Secções Pedagógicas
+                    </h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3">
+                            <span class="bg-purple-100 text-purple-700 p-2 rounded-lg h-fit">01</span>
+                            <div>
+                                <strong class="text-gray-800">Guia de Estudo:</strong> Assista ao vídeo documentário, ouça o podcast narrativo e explore as infografias e textos técnicos em acordeão.
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="bg-purple-100 text-purple-700 p-2 rounded-lg h-fit">02</span>
+                            <div>
+                                <strong class="text-gray-800">Flashcards:</strong> Memorização ativa. No modo estudo, clique no cartão para revelar a resposta. No modo jogo, arraste e emparelhe os termos.
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="bg-purple-100 text-purple-700 p-2 rounded-lg h-fit">03</span>
+                            <div>
+                                <strong class="text-gray-800">Glossário:</strong> Consulte a terminologia científica. Utilize o modo jogo para testar a sua compreensão das definições.
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="bg-purple-100 text-purple-700 p-2 rounded-lg h-fit">04</span>
+                            <div>
+                                <strong class="text-gray-800">Quiz:</strong> O desafio final. Responda às 15 perguntas para ganhar as medalhas de bronze, prata ou ouro.
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4 class="font-bold text-purple-800 border-b border-purple-100 pb-2 mb-3 flex items-center gap-2">
+                        <span class="text-xl">📜</span> Certificação
+                    </h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Ao terminar o Quiz, poderá inserir o seu nome para gerar um <strong>Certificado de Mérito</strong> oficial, que pode ser impresso ou guardado como PDF.</p>
+                </section>
+
+                <div class="bg-purple-50 p-4 rounded-xl text-center">
+                    <p class="text-purple-900 font-bold text-sm">Bons estudos, Jovem Biólogo!</p>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 border-t flex justify-end">
+                <button onclick="closeModal('user-guide-modal')" class="bg-purple-800 text-white px-6 py-2 rounded-full hover:bg-purple-900 transition-colors font-bold text-sm">Entendido!</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Infographic Modal -->
     <div id="infographic-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4" onclick="if(event.target === this) closeModal('infographic-modal')">
         <div class="relative w-full h-full flex flex-col">
